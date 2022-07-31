@@ -13,6 +13,10 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Image("Logo")
+                    .resizable()
+                    .frame(width: 300, height: 300)
+                
                 RoundedRectangle(cornerRadius: 25, style: .continuous)
                     .strokeBorder(Color.white,lineWidth: 2)
                     .frame(width: 300, height: 80)
@@ -40,12 +44,13 @@ struct HomeView: View {
                     RoundedRectangle(cornerRadius: 25, style: .continuous)
                         .strokeBorder(Color.white,lineWidth: 2)
                         .frame(width: 300, height: 80)
-                        .background(RoundedRectangle(cornerRadius: 25, style: .continuous).foregroundColor(.orange.opacity(0.6)))
+                        .background(RoundedRectangle(cornerRadius: 25, style: .continuous).foregroundColor(.orange.opacity(0.7)))
                         .overlay(
                             Text("Statistics")
                                 .foregroundColor(.white)
                         )
                 }
+                Spacer()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.blue.opacity(0.7))
