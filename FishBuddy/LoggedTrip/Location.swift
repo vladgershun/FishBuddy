@@ -4,10 +4,10 @@
 //
 //  Created by Vlad Gershun on 7/31/22.
 //
+//  Model of what a location is
 
 import Foundation
 import MapKit
-
 
 struct Location: Hashable {
     let name: String

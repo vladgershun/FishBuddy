@@ -4,12 +4,12 @@
 //
 //  Created by Vlad Gershun on 7/31/22.
 //
+//  View displaying all previous trips
 
 import SwiftUI
 
 struct TripCollectionView: View {
     @State var tripCollection = TripCollection.trips
-    
     
     var body: some View {
         List(tripCollection.trips) { trip in

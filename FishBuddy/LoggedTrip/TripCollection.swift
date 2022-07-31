@@ -4,6 +4,7 @@
 //
 //  Created by Vlad Gershun on 7/31/22.
 //
+//  Model for storing all previous trips
 
 import Foundation
 

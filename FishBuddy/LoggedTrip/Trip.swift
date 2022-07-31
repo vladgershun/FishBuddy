@@ -4,6 +4,7 @@
 //
 //  Created by Vlad Gershun on 7/31/22.
 //
+//  Model for what a trip will consist of
 
 import Foundation
 import MapKit
@@ -50,7 +51,6 @@ extension MKMapRect {
 }
 
 extension Trip {
-
     static let day1 = Trip(id: UUID(), firstLocation: .klineline)
     static let day2 = Trip(id: UUID(), firstLocation: .columbiaRiver)
     static let day3: Trip = {

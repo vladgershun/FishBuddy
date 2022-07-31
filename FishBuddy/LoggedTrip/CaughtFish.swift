@@ -4,13 +4,14 @@
 //
 //  Created by Vlad Gershun on 7/31/22.
 //
+//  Model of a caught fish
 
 import Foundation
 
 struct CaughtFish: Identifiable {
     
     let id: UUID
-    var species: String
+    var fish: Fish
     /// Length in inches
     var length: Measurement<UnitLength>
     let timeCaught: Date
@@ -21,8 +22,19 @@ struct CaughtFish: Identifiable {
 
 extension CaughtFish {
     
-    static let chinook = CaughtFish(id: UUID(), species: "Chinook", length: Measurement(value: 36, unit: .inches), timeCaught: .now)
-    static let cohoe = CaughtFish(id: UUID(), species: "Cohoe", length: Measurement(value: 36, unit: .inches), timeCaught: .now)
-    static let rainbowTrout = CaughtFish(id: UUID(), species: "Rainbow Trout", length: Measurement(value: 12, unit: .inches), timeCaught: .now)
+    static let chinook = CaughtFish(id: UUID(),
+                                    fish: .salmon,
+                                    length: Measurement(value: 36, unit: .inches),
+                                    timeCaught: .now)
+    
+    static let bass = CaughtFish(id: UUID(),
+                                  fish: .bass,
+                                  length: Measurement(value: 16, unit: .inches),
+                                  timeCaught: .now)
+    
+    static let rainbowTrout = CaughtFish(id: UUID(),
+                                         fish: .trout,
+                                         length: Measurement(value: 12, unit: .inches),
+                                         timeCaught: .now)
     
 }
