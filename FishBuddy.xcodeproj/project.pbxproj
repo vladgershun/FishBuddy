@@ -109,10 +109,8 @@
 			isa = PBXGroup;
 			children = (
 				F521A5052896E2CC005D8BF6 /* FishBuddyApp.swift */,
-				F521A5072896E2CC005D8BF6 /* HomeView.swift */,
-				F521A538289708DC005D8BF6 /* TripCollectionView.swift */,
-				F521A53C2897142D005D8BF6 /* TripDetailView.swift */,
-				F521A53728970878005D8BF6 /* Trip */,
+				F5F6050E28972CE5006A40D5 /* Views */,
+				F521A53728970878005D8BF6 /* LoggedTrip */,
 				F521A5092896E2CD005D8BF6 /* Assets.xcassets */,
 				F521A50B2896E2CD005D8BF6 /* Preview Content */,
 			);
@@ -144,7 +142,7 @@
 			path = FishBuddyUITests;
 			sourceTree = "<group>";
 		};
-		F521A53728970878005D8BF6 /* Trip */ = {
+		F521A53728970878005D8BF6 /* LoggedTrip */ = {
 			isa = PBXGroup;
 			children = (
 				F521A53528970835005D8BF6 /* TripCollection.swift */,
@@ -153,7 +151,17 @@
 				F521A53A28970E45005D8BF6 /* Location.swift */,
 				F521A52F2896EE6C005D8BF6 /* CaughtFish.swift */,
 			);
-			path = Trip;
+			path = LoggedTrip;
+			sourceTree = "<group>";
+		};
+		F5F6050E28972CE5006A40D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F521A5072896E2CC005D8BF6 /* HomeView.swift */,
+				F521A538289708DC005D8BF6 /* TripCollectionView.swift */,
+				F521A53C2897142D005D8BF6 /* TripDetailView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
