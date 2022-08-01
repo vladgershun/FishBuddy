@@ -4,11 +4,15 @@
 //
 //  Created by Vlad Gershun on 7/31/22.
 //
-//  View displaying all previous trips
 
 import SwiftUI
 
 struct TripCollectionView: View {
+    
+    init(){
+        UITableView.appearance().backgroundColor = .clear
+    }
+    
     @State var tripCollection = TripCollection.trips
     
     var body: some View {
@@ -28,11 +32,9 @@ struct TripCollectionView: View {
                 }
             }
         }
+        //        .scrollContentBackground(.hidden) iOS 16
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.blue.opacity(0.7))
     }
 }
 
-struct TripCollectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        TripCollectionView()
-    }
-}

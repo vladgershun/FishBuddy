@@ -4,7 +4,6 @@
 //
 //  Created by Vlad Gershun on 7/31/22.
 //
-//  View displaying information about a selected trip
 
 import SwiftUI
 import MapKit

@@ -8,13 +8,15 @@
 
 import Foundation
 
-struct Fish: Identifiable {
+struct Fish: Identifiable, Hashable {
     
     let id: UUID
     let species: String
 }
 
 extension Fish {
+    
+    static let exampleFish = [Fish(id: UUID(), species: "Salmon"), Fish(id: UUID(), species: "Trout"), Fish(id: UUID(), species: "Bass")]
     
     static let salmon = Fish(id: UUID(), species: "Salmon")
     static let trout = Fish(id: UUID(), species: "Trout")

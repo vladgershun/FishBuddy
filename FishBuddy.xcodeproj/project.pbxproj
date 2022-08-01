@@ -22,7 +22,7 @@
 		F521A53B28970E45005D8BF6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A53A28970E45005D8BF6 /* Location.swift */; };
 		F521A53D2897142D005D8BF6 /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A53C2897142D005D8BF6 /* TripDetailView.swift */; };
 		F5F6051028972DBC006A40D5 /* Fish.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F6050F28972DBC006A40D5 /* Fish.swift */; };
-		F5F60512289736C2006A40D5 /* AddTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F60511289736C2006A40D5 /* AddTripView.swift */; };
+		F5F60512289736C2006A40D5 /* AddCatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F60511289736C2006A40D5 /* AddCatchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,7 @@
 		F521A53A28970E45005D8BF6 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		F521A53C2897142D005D8BF6 /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
 		F5F6050F28972DBC006A40D5 /* Fish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fish.swift; sourceTree = "<group>"; };
-		F5F60511289736C2006A40D5 /* AddTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripView.swift; sourceTree = "<group>"; };
+		F5F60511289736C2006A40D5 /* AddCatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				F521A5072896E2CC005D8BF6 /* HomeView.swift */,
-				F5F60511289736C2006A40D5 /* AddTripView.swift */,
+				F5F60511289736C2006A40D5 /* AddCatchView.swift */,
 				F521A538289708DC005D8BF6 /* TripCollectionView.swift */,
 				F521A53C2897142D005D8BF6 /* TripDetailView.swift */,
 			);
@@ -307,7 +307,7 @@
 				F521A539289708DC005D8BF6 /* TripCollectionView.swift in Sources */,
 				F5F6051028972DBC006A40D5 /* Fish.swift in Sources */,
 				F521A53628970835005D8BF6 /* TripCollection.swift in Sources */,
-				F5F60512289736C2006A40D5 /* AddTripView.swift in Sources */,
+				F5F60512289736C2006A40D5 /* AddCatchView.swift in Sources */,
 				F521A5322896F0F4005D8BF6 /* LocationVisit.swift in Sources */,
 				F521A5342896F25C005D8BF6 /* Trip.swift in Sources */,
 				F521A5302896EE6C005D8BF6 /* CaughtFish.swift in Sources */,
