@@ -26,6 +26,7 @@ struct TripDetailView: View {
                             .background(.blue, in: Circle())
                     }
                 }
+                .border(.white, width: 2)
                 .onAppear {
                     region = trip.boundingRegion
                     func scaleScreenWidth(_ screenValue: CGFloat) -> Double {
@@ -42,27 +43,31 @@ struct TripDetailView: View {
                 .padding()
                 .frame(maxHeight: geo.size.height * 0.5)
                 
-                List(trip.locations) { location in
-                    NavigationLink {
-                        //
-                    } label: {
-                        Text(location.location.name)
-                    }
-                    
-                }
-                
-                
                 HStack {
                     Text("Fish Caught: ")
+                        .font(.title2)
+                        .foregroundColor(.white)
                     Text(trip.totalFishCaught, format: .number)
-                    Spacer()
+                        .font(.title2)
+                        .foregroundColor(.white)
                 }
-                .padding()
+             
                 
+                List(trip.locations) { location in
+                    NavigationLink {
+                        LocationView(locations: location)
+                    } label: {
+                        Text(location.location.name)
+                        
+                    }
+                }
+                
+            
                 Spacer()
                 
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.blue.opacity(0.7))
             
             
         }

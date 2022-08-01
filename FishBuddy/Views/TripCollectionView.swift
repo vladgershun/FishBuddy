@@ -25,6 +25,7 @@ struct TripCollectionView: View {
                     VStack(alignment: .leading) {
                         Text(trip.arrivalDate, format: .dateTime.day().month())
                         Text(trip.locations.map(\.location.name), format: .list(type: .and))
+//                            .listRowBackground(.red) why no work?
                     }
                     
                     Spacer()

@@ -8,13 +8,57 @@
 import SwiftUI
 
 struct LocationView: View {
+    var locations: LocationVisit
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-struct LocationView_Previews: PreviewProvider {
-    static var previews: some View {
-        LocationView()
+        VStack {
+            HStack {
+                Text("Arrival Time:")
+                    .font(.title2)
+                    .foregroundColor(.white)
+                Text(locations.arrivialTime, format: .dateTime)
+                    .font(.title2)
+                    .foregroundColor(.white)
+            }
+            
+            HStack {
+                Text("Fish Caught:")
+                    .font(.title2)
+                    .foregroundColor(.white)
+                Text(locations.catches.count, format: .number)
+                    .font(.title2)
+                    .foregroundColor(.white)
+            }
+            
+            Text("Weather Info")
+                .font(.title2)
+                .foregroundColor(.white)
+            
+            HStack {
+                Text("Water Temperature:")
+                    .font(.title2)
+                    .foregroundColor(.white)
+//                Text(locations.waterTemperature, format: .number)
+            }
+            
+            HStack {
+                Text("Water Clarity:")
+                    .font(.title2)
+                    .foregroundColor(.white)
+//                Text(locations.waterClarity, format: .number)
+            }
+            
+            List(locations.catches) { fish in
+                Text(fish.fish.species)
+            }
+            
+            
+            
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(.blue.opacity(0.7))
+        .navigationTitle(locations.location.name)
+        .navigationBarTitleDisplayMode(.inline)
+        
     }
 }

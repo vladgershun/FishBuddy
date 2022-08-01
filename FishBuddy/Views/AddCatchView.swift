@@ -15,7 +15,9 @@ struct AddCatchView: View {
     @State private var weight: Measurement<UnitMass> = Measurement(value: 32, unit: .pounds)
     @State private var waterTemperature: Measurement<UnitTemperature> = Measurement(value: 50, unit: .fahrenheit)
     @State private var timeCaught = Date.now
+    @State private var bait = ""
     @FocusState private var weightIsFocused: Bool
+    @FocusState private var baitIsFocused: Bool
     
     //Remove for iOS 16
     init(){
@@ -53,6 +55,10 @@ struct AddCatchView: View {
                             }
                         }
                         
+                        TextField("Bait", text: $bait)
+                            .focused($baitIsFocused)
+
+                        
                         Text("Add Image")
                     }
                     
@@ -71,7 +77,7 @@ struct AddCatchView: View {
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()
                     Button("Done") {
-                        weightIsFocused = false
+                        baitIsFocused = false
                     }
                 }
             }
