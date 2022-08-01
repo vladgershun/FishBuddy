@@ -55,7 +55,7 @@ struct HomeView: View {
                         )
                 }
                 
-                NavigationLink(destination: TripCollectionView()) {
+                NavigationLink(destination: StatisticsView()) {
                     RoundedRectangle(cornerRadius: 25, style: .continuous)
                         .strokeBorder(Color.white,lineWidth: 2)
                         .frame(width: 300, height: 80)

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F51E49B52897842400ED7472 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51E49B42897842400ED7472 /* StatisticsView.swift */; };
+		F51E49B728979AFD00ED7472 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51E49B628979AFD00ED7472 /* LocationView.swift */; };
 		F521A5062896E2CC005D8BF6 /* FishBuddyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A5052896E2CC005D8BF6 /* FishBuddyApp.swift */; };
 		F521A5082896E2CC005D8BF6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A5072896E2CC005D8BF6 /* HomeView.swift */; };
 		F521A50A2896E2CD005D8BF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F521A5092896E2CD005D8BF6 /* Assets.xcassets */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F51E49B42897842400ED7472 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		F51E49B628979AFD00ED7472 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 		F521A5022896E2CC005D8BF6 /* FishBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FishBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F521A5052896E2CC005D8BF6 /* FishBuddyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishBuddyApp.swift; sourceTree = "<group>"; };
 		F521A5072896E2CC005D8BF6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 				F5F60511289736C2006A40D5 /* AddCatchView.swift */,
 				F521A538289708DC005D8BF6 /* TripCollectionView.swift */,
 				F521A53C2897142D005D8BF6 /* TripDetailView.swift */,
+				F51E49B628979AFD00ED7472 /* LocationView.swift */,
+				F51E49B42897842400ED7472 /* StatisticsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -300,7 +306,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F51E49B728979AFD00ED7472 /* LocationView.swift in Sources */,
 				F521A5082896E2CC005D8BF6 /* HomeView.swift in Sources */,
+				F51E49B52897842400ED7472 /* StatisticsView.swift in Sources */,
 				F521A5062896E2CC005D8BF6 /* FishBuddyApp.swift in Sources */,
 				F521A53D2897142D005D8BF6 /* TripDetailView.swift in Sources */,
 				F521A53B28970E45005D8BF6 /* Location.swift in Sources */,

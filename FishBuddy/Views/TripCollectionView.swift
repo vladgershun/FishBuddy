@@ -11,6 +11,7 @@ struct TripCollectionView: View {
     
     init(){
         UITableView.appearance().backgroundColor = .clear
+        UITableViewCell.appearance().backgroundColor = .red
     }
     
     @State var tripCollection = TripCollection.trips
@@ -30,7 +31,9 @@ struct TripCollectionView: View {
                     
                     Text(trip.totalFishCaught, format: .number)
                 }
+                
             }
+            
         }
         //        .scrollContentBackground(.hidden) iOS 16
         .frame(maxWidth: .infinity, maxHeight: .infinity)

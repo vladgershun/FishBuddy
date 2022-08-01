@@ -14,30 +14,57 @@ struct TripDetailView: View {
     @State private var region = MKMapRect.world
     
     /// Padding around annotations in screen points.
-    @ScaledMetric(relativeTo: .body) private var mapPadding = 25.0
+    @ScaledMetric(relativeTo: .body) private var mapPadding = 30.0
     
     var body: some View {
         GeometryReader { geo in
-            Map(mapRect: $region, annotationItems: trip.locations) { visit in
-                MapAnnotation(coordinate: visit.location.coordinate) {
-                    Text(visit.catches.count, format: .number)
-                        .padding()
-                        .background(.blue, in: Circle())
+            VStack {
+                Map(mapRect: $region, annotationItems: trip.locations) { visit in
+                    MapAnnotation(coordinate: visit.location.coordinate) {
+                        Text(visit.catches.count, format: .number)
+                            .padding()
+                            .background(.blue, in: Circle())
+                    }
                 }
+                .onAppear {
+                    region = trip.boundingRegion
+                    func scaleScreenWidth(_ screenValue: CGFloat) -> Double {
+                        region.width / geo.size.width * screenValue
+                    }
+                    func scaleScreenHeight(_ screenValue: CGFloat) -> Double {
+                        region.height / geo.size.height * screenValue
+                    }
+                    region = region.insetBy(
+                        dx: -scaleScreenWidth(mapPadding),
+                        dy: -scaleScreenHeight(mapPadding)
+                    )
+                }
+                .padding()
+                .frame(maxHeight: geo.size.height * 0.5)
+                
+                List(trip.locations) { location in
+                    NavigationLink {
+                        //
+                    } label: {
+                        Text(location.location.name)
+                    }
+                    
+                }
+                
+                
+                HStack {
+                    Text("Fish Caught: ")
+                    Text(trip.totalFishCaught, format: .number)
+                    Spacer()
+                }
+                .padding()
+                
+                Spacer()
+                
             }
-            .onAppear {
-                region = trip.boundingRegion
-                func scaleScreenWidth(_ screenValue: CGFloat) -> Double {
-                    region.width / geo.size.width * screenValue
-                }
-                func scaleScreenHeight(_ screenValue: CGFloat) -> Double {
-                    region.height / geo.size.height * screenValue
-                }
-                region = region.insetBy(
-                    dx: -scaleScreenWidth(mapPadding),
-                    dy: -scaleScreenHeight(mapPadding)
-                )
-            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            
+            
         }
         .ignoresSafeArea(.container, edges: .bottom)
         .navigationTitle(Text(trip.arrivalDate, format: .dateTime.day().month()))

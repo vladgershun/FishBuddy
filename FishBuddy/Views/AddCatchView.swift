@@ -57,7 +57,12 @@ struct AddCatchView: View {
                     }
                     
                     Section {
-                        Button("Add Catch") {}
+                        HStack {
+                            Spacer()
+                            Button("Add Catch") { dismiss() }
+                            Spacer()
+                        }
+                        
                     }
                     
                 }
@@ -70,7 +75,7 @@ struct AddCatchView: View {
                     }
                 }
             }
-            //        .scrollContentBackground(.hidden) fix when iOS 16
+//            .scrollContentBackground(.hidden) fix when iOS 16
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.blue.opacity(0.7))
         }
