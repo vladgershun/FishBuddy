@@ -20,7 +20,7 @@ struct HomeView: View {
                     .frame(width: 300, height: 300)
                 
                 RoundedRectangle(cornerRadius: 25, style: .continuous)
-                    .strokeBorder(Color.white,lineWidth: 2)
+                    .strokeBorder(.white, lineWidth: 2)
                     .frame(width: 300, height: 80)
                     .background(RoundedRectangle(cornerRadius: 25, style: .continuous).foregroundColor(.green.opacity(0.6)))
                     .overlay(
@@ -40,7 +40,7 @@ struct HomeView: View {
                 
                 NavigationLink(destination: TripCollectionView()) {
                     RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .strokeBorder(Color.white,lineWidth: 2)
+                        .strokeBorder(.white, lineWidth: 2)
                         .frame(width: 300, height: 80)
                         .background(RoundedRectangle(cornerRadius: 25, style: .continuous).foregroundColor(.purple.opacity(0.6)))
                         .overlay(
@@ -57,7 +57,7 @@ struct HomeView: View {
                 
                 NavigationLink(destination: StatisticsView()) {
                     RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .strokeBorder(Color.white,lineWidth: 2)
+                        .strokeBorder(.white, lineWidth: 2)
                         .frame(width: 300, height: 80)
                         .background(RoundedRectangle(cornerRadius: 25, style: .continuous).foregroundColor(.orange.opacity(0.6)))
                         .overlay(

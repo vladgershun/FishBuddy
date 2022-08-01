@@ -43,15 +43,24 @@ struct TripDetailView: View {
                 .padding()
                 .frame(maxHeight: geo.size.height * 0.5)
                 
-                HStack {
-                    Text("Fish Caught: ")
-                        .font(.title2)
-                        .foregroundColor(.white)
-                    Text(trip.totalFishCaught, format: .number)
-                        .font(.title2)
-                        .foregroundColor(.white)
-                }
-             
+                RoundedRectangle(cornerRadius: 15, style: .continuous)
+                    .strokeBorder(.white, lineWidth: 2)
+                    .padding()
+                    .frame(maxHeight: geo.size.height * 0.1)
+                    .overlay(
+                        HStack {
+                            Text("Total Fish Caught: ")
+                                .font(.title2)
+                                .foregroundColor(.white)
+                            
+                            Spacer()
+                            
+                            Text(trip.totalFishCaught, format: .number)
+                                .font(.title2)
+                                .foregroundColor(.white)
+                        }
+                            .padding(30)
+                    )
                 
                 List(trip.locations) { location in
                     NavigationLink {
@@ -62,7 +71,9 @@ struct TripDetailView: View {
                     }
                 }
                 
-            
+                
+                
+                
                 Spacer()
                 
             }

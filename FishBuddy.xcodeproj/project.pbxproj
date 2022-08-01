@@ -23,6 +23,7 @@
 		F521A539289708DC005D8BF6 /* TripCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A538289708DC005D8BF6 /* TripCollectionView.swift */; };
 		F521A53B28970E45005D8BF6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A53A28970E45005D8BF6 /* Location.swift */; };
 		F521A53D2897142D005D8BF6 /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A53C2897142D005D8BF6 /* TripDetailView.swift */; };
+		F5AA34C1289878FF0096FCAB /* FishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AA34C0289878FF0096FCAB /* FishView.swift */; };
 		F5F6051028972DBC006A40D5 /* Fish.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F6050F28972DBC006A40D5 /* Fish.swift */; };
 		F5F60512289736C2006A40D5 /* AddCatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F60511289736C2006A40D5 /* AddCatchView.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		F521A538289708DC005D8BF6 /* TripCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCollectionView.swift; sourceTree = "<group>"; };
 		F521A53A28970E45005D8BF6 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		F521A53C2897142D005D8BF6 /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
+		F5AA34C0289878FF0096FCAB /* FishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishView.swift; sourceTree = "<group>"; };
 		F5F6050F28972DBC006A40D5 /* Fish.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fish.swift; sourceTree = "<group>"; };
 		F5F60511289736C2006A40D5 /* AddCatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,6 +173,7 @@
 				F521A538289708DC005D8BF6 /* TripCollectionView.swift */,
 				F521A53C2897142D005D8BF6 /* TripDetailView.swift */,
 				F51E49B628979AFD00ED7472 /* LocationView.swift */,
+				F5AA34C0289878FF0096FCAB /* FishView.swift */,
 				F51E49B42897842400ED7472 /* StatisticsView.swift */,
 			);
 			path = Views;
@@ -318,6 +321,7 @@
 				F5F60512289736C2006A40D5 /* AddCatchView.swift in Sources */,
 				F521A5322896F0F4005D8BF6 /* LocationVisit.swift in Sources */,
 				F521A5342896F25C005D8BF6 /* Trip.swift in Sources */,
+				F5AA34C1289878FF0096FCAB /* FishView.swift in Sources */,
 				F521A5302896EE6C005D8BF6 /* CaughtFish.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
