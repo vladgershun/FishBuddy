@@ -71,7 +71,7 @@ struct TripDetailView: View {
                     .overlay {
                         List(trip.locations) { location in
                             NavigationLink {
-                                LocationView(locations: location)
+                                LocationView(locations: location, trip: trip)
                             } label: {
                                 Text(location.location.name)
                                 

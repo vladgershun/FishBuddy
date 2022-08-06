@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LocationView: View {
     var locations: LocationVisit
+    var trip: Trip
     
     var body: some View {
         List {
@@ -103,7 +104,7 @@ struct LocationView: View {
             Section {
                 ForEach(locations.catches) { fish in
                     NavigationLink(fish.fish.species) {
-                        FishView(fish: fish, location: locations)
+                        FishView(fish: fish, location: locations, trip: trip)
                     }
                 }
                 .listRowBackground(Color.red)
@@ -127,7 +128,7 @@ struct LocationView: View {
     }
 }
 
-struct LocationView_Previews: PreviewProvider {
-    static var previews: some View {
-        LocationView(locations: LocationVisit(id: UUID(), arrivialTime: .now, catches: [CaughtFish.chinook, CaughtFish.rainbowTrout], location: .klineline, waterTemperature: Measurement(value: 50, unit: .fahrenheit), waterClarity: .muddy))    }
-}
+//struct LocationView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LocationView(locations: LocationVisit(id: UUID(), arrivialTime: .now, catches: [CaughtFish.chinook, CaughtFish.rainbowTrout], location: .klineline, waterTemperature: Measurement(value: 50, unit: .fahrenheit), waterClarity: .muddy))    }
+//}
