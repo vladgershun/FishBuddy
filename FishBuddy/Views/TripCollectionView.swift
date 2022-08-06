@@ -9,10 +9,10 @@ import SwiftUI
 
 struct TripCollectionView: View {
     
-    init(){
-        UITableView.appearance().backgroundColor = .clear
-        UITableViewCell.appearance().backgroundColor = .red
-    }
+//    init(){
+//        UITableView.appearance().backgroundColor = .clear
+//        UITableViewCell.appearance().backgroundColor = .red
+//    }
     
     @State var tripCollection = TripCollection.trips
     
@@ -36,7 +36,7 @@ struct TripCollectionView: View {
             }
             
         }
-        //        .scrollContentBackground(.hidden) iOS 16
+        .scrollContentBackground(.hidden)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.blue.opacity(0.7))
         .navigationTitle("Trip Log")

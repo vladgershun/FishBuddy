@@ -19,11 +19,6 @@ struct AddCatchView: View {
     @FocusState private var weightIsFocused: Bool
     @FocusState private var baitIsFocused: Bool
     
-    //Remove for iOS 16
-    init(){
-        UITableView.appearance().backgroundColor = .clear
-    }
-    
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
@@ -81,7 +76,7 @@ struct AddCatchView: View {
                     }
                 }
             }
-//            .scrollContentBackground(.hidden) fix when iOS 16
+            .scrollContentBackground(.hidden)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(.blue.opacity(0.7))
         }

@@ -10,7 +10,7 @@ import MapKit
 
 struct FishView: View {
     var fish: CaughtFish
-    var location: Location
+    var location: LocationVisit
     
     var body: some View {
         VStack {
@@ -65,7 +65,7 @@ struct FishView: View {
                                     .font(.title2)
                                     .fontWeight(.bold)
                                     .padding([.top, .leading])
-                                Text(location.name)
+                                Text(location.location.name)
                                     .fixedSize(horizontal: false, vertical: true)
                                     .foregroundColor(.white)
                                     .font(.title2)
@@ -117,22 +117,21 @@ struct FishView: View {
                         .aspectRatio(contentMode: .fit)
                         .overlay(alignment: .topLeading) {
                             VStack(alignment: .leading) {
-                                Text("Location")
+                                Text("Water Temp")
                                     .foregroundColor(.white)
                                     .font(.title2)
                                     .fontWeight(.bold)
                                     .padding([.top, .leading])
-                                Text(location.name)
-                                    .fixedSize(horizontal: false, vertical: true)
+                                Text(location.waterTemperature, format: .measurement(width: .abbreviated))
                                     .foregroundColor(.white)
                                     .font(.title2)
                                     .padding([.leading])
-                                Text("Time Caught")
+                                Text("Water Clarity")
                                     .foregroundColor(.white)
                                     .font(.title2)
                                     .fontWeight(.bold)
                                     .padding([.top, .leading])
-                                Text(fish.timeCaught, format: .dateTime.hour().minute())
+                                Text(location.waterClarity.rawValue)
                                     .foregroundColor(.white)
                                     .font(.title2)
                                     .padding([.leading])
@@ -159,6 +158,6 @@ struct FishView_Previews: PreviewProvider {
                                   weight: Measurement(value: 5, unit: .pounds),
                                   bait: "Worm",
                                   timeCaught: .now),
-                 location: Location(name: "Columbia River", coordinate: CLLocationCoordinate2D(latitude: 12, longitude: -123)))
+                 location: LocationVisit(id: UUID(), arrivialTime: .now, catches: [.chinook], location: Location(name: "Klineline", coordinate: CLLocationCoordinate2D(latitude: 123, longitude: 32)), waterTemperature: Measurement(value: 32, unit: .fahrenheit), waterClarity: .muddy))
     }
 }
