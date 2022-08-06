@@ -21,4 +21,6 @@ extension Fish {
     static let salmon = Fish(id: UUID(), species: "Salmon")
     static let trout = Fish(id: UUID(), species: "Trout")
     static let bass = Fish(id: UUID(), species: "Bass")
+    static let greenSturgeon = Fish(id: UUID(), species: "Green Stureon")
+
 }
