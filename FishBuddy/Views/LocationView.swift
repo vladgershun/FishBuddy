@@ -11,106 +11,106 @@ struct LocationView: View {
     var locations: LocationVisit
     
     var body: some View {
-        GeometryReader { geo in
-            VStack {
-                
-                RoundedRectangle(cornerRadius: 15, style: .continuous)
-                    .strokeBorder(.white, lineWidth: 2)
-                    .background(RoundedRectangle(cornerRadius: 25, style: .continuous).foregroundColor(.purple.opacity(0.6)))
-                    .frame(maxHeight: geo.size.height * 0.1)
-                    .padding([.leading, .trailing], 30)
-                    .overlay(
-                        HStack {
-                            Text("Arrival Time:")
-                                .font(.title2)
-                                .foregroundColor(.white)
-                            Text(locations.arrivialTime, format: .dateTime)
-                                .font(.title2)
-                                .foregroundColor(.white)
-                            
+        VStack {
+            Grid {
+                GridRow {
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .strokeBorder(.white, lineWidth: 2)
+                        .background(RoundedRectangle(cornerRadius: 20, style: .continuous).foregroundColor(.green.opacity(0.9)))
+                        .aspectRatio(contentMode: .fit)
+                        .overlay(alignment: .topLeading) {
+                            VStack(alignment: .leading) {
+                                Text("Arrival Time")
+                                    .foregroundColor(.white)
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .padding([.top, .leading])
+                                Text(locations.arrivialTime, format: .dateTime)
+                                    .foregroundColor(.white)
+                                    .font(.title2)
+                                    .padding([.leading])
+                                Text("Fish Caught")
+                                    .foregroundColor(.white)
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .padding([.top, .leading])
+                                Text(locations.catches.count, format: .number)
+                                    .foregroundColor(.white)
+                                    .font(.title2)
+                                    .padding([.leading])
+                            }
                         }
-                    )
-                
-                RoundedRectangle(cornerRadius: 15, style: .continuous)
-                    .strokeBorder(.white, lineWidth: 2)
-                    .background(RoundedRectangle(cornerRadius: 25, style: .continuous).foregroundColor(.purple.opacity(0.6)))
-                    .frame(maxHeight: geo.size.height * 0.1)
-                    .padding([.leading, .trailing], 30)
-                    .overlay(
-                        HStack {
-                            
-                            Text("Fish Caught:")
-                                .font(.title2)
-                                .foregroundColor(.white)
-                            Text(locations.catches.count, format: .number)
-                                .font(.title2)
-                                .foregroundColor(.white)
-                            
+                    
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .strokeBorder(.white, lineWidth: 2)
+                        .background(RoundedRectangle(cornerRadius: 20, style: .continuous).foregroundColor(.green.opacity(0.9)))
+                        .aspectRatio(contentMode: .fit)
+                        .overlay(alignment: .topLeading) {
+                            VStack(alignment: .leading) {
+                                Text("Water Temperature")
+                                    .foregroundColor(.white)
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .padding([.top, .leading])
+                                Text("location.name")
+                                    .fixedSize(horizontal: false, vertical: true)
+                                    .foregroundColor(.white)
+                                    .font(.title2)
+                                    .padding([.leading])
+                                Text("Water Clarity")
+                                    .foregroundColor(.white)
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .padding([.top, .leading])
+                                Text(locations.waterClarity.rawValue)
+                                    .foregroundColor(.white)
+                                    .font(.title2)
+                                    .padding([.leading])
+                            }
                         }
-                    )
-                
-                RoundedRectangle(cornerRadius: 15, style: .continuous)
-                    .strokeBorder(.white, lineWidth: 2)
-                    .background(RoundedRectangle(cornerRadius: 25, style: .continuous).foregroundColor(.purple.opacity(0.6)))
-                    .frame(maxHeight: geo.size.height * 0.1)
-                    .padding([.leading, .trailing], 30)
-                    .overlay(
-                        HStack {
-                            Text("Weather Info")
-                                .font(.title2)
-                                .foregroundColor(.white)
-                            
-                        }
-                    )
-                
-                RoundedRectangle(cornerRadius: 15, style: .continuous)
-                    .strokeBorder(.white, lineWidth: 2)
-                    .background(RoundedRectangle(cornerRadius: 25, style: .continuous).foregroundColor(.purple.opacity(0.6)))
-                    .frame(maxHeight: geo.size.height * 0.1)
-                    .padding([.leading, .trailing], 30)
-                    .overlay(
-                        HStack {
-                            Text("Water Temperature:")
-                                .font(.title2)
-                                .foregroundColor(.white)
-                            //                Text(locations.waterTemperature, format: .number)
-                        }
-                    )
-                
-                RoundedRectangle(cornerRadius: 15, style: .continuous)
-                    .strokeBorder(.white, lineWidth: 2)
-                    .background(RoundedRectangle(cornerRadius: 25, style: .continuous).foregroundColor(.purple.opacity(0.6)))
-                    .frame(maxHeight: geo.size.height * 0.1)
-                    .padding([.leading, .trailing], 30)
-                    .overlay(
-                        HStack {
-                            Text("Water Clarity:")
-                                .font(.title2)
-                                .foregroundColor(.white)
-                            //                Text(locations.waterClarity, format: .number)
-                        }
-                    )
-                
-                
-                
-                
-                
-                
-                List(locations.catches) { fish in
-                    NavigationLink(fish.fish.species) {
-                        FishView(fish: fish)
-                    }
                 }
-                
-                
-                
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.blue.opacity(0.7))
-            .navigationTitle(locations.location.name)
-            .navigationBarTitleDisplayMode(.inline)
+            
+            GridRow {
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .strokeBorder(.white, lineWidth: 2)
+                    .background(RoundedRectangle(cornerRadius: 20, style: .continuous).foregroundColor(.gray.opacity(0.9)))
+                    .aspectRatio(contentMode: .fit)
+                    .overlay {
+                        Text("Weather Info")
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            .padding([.leading])
+                    }
+            }
+            
+            GridRow {
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .strokeBorder(.white, lineWidth: 2)
+                
+                    .background(RoundedRectangle(cornerRadius: 20, style: .continuous).foregroundColor(.gray.opacity(0.9)))
+                    .aspectRatio(contentMode: .fit)
+                    .overlay {
+                        List(locations.catches) { fish in
+                            NavigationLink(fish.fish.species) {
+                                FishView(fish: fish, location: locations.location)
+                            }
+                        }
+                    }
+
+            }
+            
+            
         }
-        
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+//        .background(.blue.opacity(0.7))
+        .navigationTitle(locations.location.name)
+        .navigationBarTitleDisplayMode(.inline)
         
     }
+}
+
+struct LocationView_Previews: PreviewProvider {
+    static var previews: some View {
+        LocationView(locations: LocationVisit(id: UUID(), arrivialTime: .now, catches: [CaughtFish.chinook, CaughtFish.rainbowTrout], location: .klineline, waterTemperature: Measurement(value: 50, unit: .fahrenheit), waterClarity: .muddy))    }
 }

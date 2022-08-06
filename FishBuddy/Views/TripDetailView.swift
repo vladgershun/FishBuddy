@@ -45,9 +45,10 @@ struct TripDetailView: View {
                 
                 RoundedRectangle(cornerRadius: 15, style: .continuous)
                     .strokeBorder(.white, lineWidth: 2)
+                    .frame(maxWidth: geo.size.width, maxHeight: geo.size.height * 0.06)
+                    .background(RoundedRectangle(cornerRadius: 25, style: .continuous).foregroundColor(.green.opacity(0.9)))
                     .padding()
-                    .frame(maxHeight: geo.size.height * 0.1)
-                    .overlay(
+                    .overlay {
                         HStack {
                             Text("Total Fish Caught: ")
                                 .font(.title2)
@@ -59,17 +60,53 @@ struct TripDetailView: View {
                                 .font(.title2)
                                 .foregroundColor(.white)
                         }
-                            .padding(30)
-                    )
-                
-                List(trip.locations) { location in
-                    NavigationLink {
-                        LocationView(locations: location)
-                    } label: {
-                        Text(location.location.name)
-                        
+                        .padding(30)
                     }
-                }
+                
+                RoundedRectangle(cornerRadius: 15, style: .continuous)
+                    .strokeBorder(.white, lineWidth: 2)
+                    .frame(maxWidth: geo.size.width)
+                    .background(RoundedRectangle(cornerRadius: 25, style: .continuous).foregroundColor(.green.opacity(0.9)))
+                    .padding()
+                    .overlay {
+                        List(trip.locations) { location in
+                            NavigationLink {
+                                LocationView(locations: location)
+                            } label: {
+                                Text(location.location.name)
+                                
+                            }
+                        }
+                        .padding()
+                    }
+                
+//                RoundedRectangle(cornerRadius: 15, style: .continuous)
+//                    .strokeBorder(.white, lineWidth: 2)
+//                    .padding()
+//                    .frame(maxHeight: geo.size.height * 0.1)
+//                    .overlay(
+//                        HStack {
+//                            Text("Total Fish Caught: ")
+//                                .font(.title2)
+//                                .foregroundColor(.white)
+//
+//                            Spacer()
+//
+//                            Text(trip.totalFishCaught, format: .number)
+//                                .font(.title2)
+//                                .foregroundColor(.white)
+//                        }
+//                            .padding(30)
+//                    )
+                
+//                List(trip.locations) { location in
+//                    NavigationLink {
+//                        LocationView(locations: location)
+//                    } label: {
+//                        Text(location.location.name)
+//
+//                    }
+//                }
                 
                 
                 

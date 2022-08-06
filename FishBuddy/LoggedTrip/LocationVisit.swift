@@ -10,8 +10,9 @@ import Foundation
 
 struct LocationVisit: Identifiable {
     
-    enum WaterClarity {
-        case clear, muddy
+    enum WaterClarity: String {
+        case clear = "Clear"
+        case muddy = "Muddy"
     }
     
     let id: UUID
