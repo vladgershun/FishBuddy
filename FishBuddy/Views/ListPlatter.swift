@@ -51,49 +51,53 @@ struct ListPlatter/*<Content: View>*/: View {
         VStack(alignment: .leading) {
             HStack {
                 HStack {
-                    Image(systemName: "rhombus.fill")
+                    Image(systemName: "fish.fill")
                     Text(fish.bait)
-                        .font(.title2)
+                        .font(.title3)
                 }
                 
                 Spacer()
                 
                 HStack {
                     Text(fish.timeCaught, format: .dateTime.hour().minute())
-                        .font(.title2)
+                        .font(.title3)
                     Image(systemName: "clock.fill")
                 }
             }
+            
+            Divider()
             
             HStack {
                 HStack {
                     Image(systemName: "scalemass.fill")
                     Text(fish.weight, format: .measurement(width: .abbreviated))
-                        .font(.title2)
+                        .font(.title3)
                 }
                 
                 Spacer()
                 
                 HStack {
                     Text(location.waterTemperature, format: .measurement(width: .abbreviated))
-                        .font(.title2)
+                        .font(.title3)
                     Image(systemName: "thermometer.medium")
                 }
             }
+            
+            Divider()
             
             HStack {
                 HStack {
                     Image(systemName: "ruler.fill")
                     Text(fish.length, format: .measurement(width: .abbreviated))
-                        .font(.title2)
+                        .font(.title3)
                 }
                 
                 Spacer()
                 
                 HStack {
                     Text(location.waterClarity.rawValue)
-                        .font(.title2)
-                    Image(systemName: "ruler.fill")
+                        .font(.title3)
+                    Image(systemName: "drop.fill")
                 }
                 
             }
