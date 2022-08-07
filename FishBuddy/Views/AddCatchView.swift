@@ -63,9 +63,7 @@ struct AddCatchView: View {
                             Button("Add Catch") { dismiss() }
                             Spacer()
                         }
-                        
                     }
-                    
                 }
             }
             .toolbar {
@@ -77,8 +75,6 @@ struct AddCatchView: View {
                 }
             }
             .scrollContentBackground(.hidden)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.blue.opacity(0.7))
         }
         
         

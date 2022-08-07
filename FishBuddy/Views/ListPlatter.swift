@@ -28,7 +28,37 @@ extension RoundedRectangle {
     static let platter = RoundedRectangle(cornerRadius: 10, style: .continuous)
 }
 
-struct ListPlatter/*<Content: View>*/: View {
+struct ListPlatterLocation: View {
+    
+    var trip: Trip
+    var location: LocationVisit
+    
+    var alignment: Alignment = .leading
+    var padding: Double? = nil
+    
+    var body: some View {
+        HStack {
+            HStack {
+                Image(systemName: "clock.fill")
+                Text(location.arrivialTime, format: .dateTime.hour().minute())
+            }
+            
+            Spacer()
+            
+            HStack {
+                Text(location.catches.count, format: .number)
+                Image(systemName: "fish.fill")
+            }
+        }
+        .padding(padding ?? 8)
+        .frame(maxWidth: .infinity, alignment: alignment)
+        .containerShape(RoundedRectangle.platter)
+        .background(Color(.secondarySystemBackground), in: RoundedRectangle.platter)
+        .listRowSeparator(.hidden)
+    }
+}
+
+struct ListPlatterFish/*<Content: View>*/: View {
     
     var fish: CaughtFish
     var location: LocationVisit
@@ -142,11 +172,11 @@ struct ListPlatterPair<Content: View>: View {
         }.listRowSeparator(.hidden)
     }
 }
-
+//
 //struct ListPlatter_Previews: PreviewProvider {
 //    static var previews: some View {
 //        List {
-//            ListPlatter {
+//            ListPlatterFish {
 //                Text("Foo")
 //            }
 //            ListPlatterPair(first: {

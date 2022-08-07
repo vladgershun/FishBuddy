@@ -13,12 +13,13 @@ struct HomeView: View {
     
     var body: some View {
         GeometryReader { geo in
-            NavigationView {
+            NavigationStack {
                 VStack {
                     
-                    Image("Logo")
-                        .resizable()
-                        .frame(width: 300, height: 300)
+                    //                Image("Logo")
+                    //                    .resizable()
+                    //                    .frame(width: 300, height: 300)
+                    Spacer()
                     
                     RoundedRectangle(cornerRadius: 25, style: .continuous)
                         .strokeBorder(.white, lineWidth: 2)
@@ -76,12 +77,11 @@ struct HomeView: View {
                     Spacer()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(.blue.opacity(0.7))
                 .sheet(isPresented: $addTripShowing) {
                     AddCatchView()
                 }
-        }
-        
+            }
+            
             
         }
     }

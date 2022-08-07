@@ -25,7 +25,6 @@ struct TripCollectionView: View {
                     VStack(alignment: .leading) {
                         Text(trip.arrivalDate, format: .dateTime.day().month())
                         Text(trip.locations.map(\.location.name), format: .list(type: .and))
-//                            .listRowBackground(.red) why no work?
                     }
                     
                     Spacer()
@@ -37,8 +36,6 @@ struct TripCollectionView: View {
             
         }
         .scrollContentBackground(.hidden)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.blue.opacity(0.7))
         .navigationTitle("Trip Log")
         .navigationBarTitleDisplayMode(.inline)
     }

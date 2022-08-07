@@ -23,27 +23,7 @@ struct FishView: View {
                 .clipShape(RoundedRectangle.platter)
                 .listRowSeparator(.hidden)
             
-            ListPlatter(fish: fish, location: location)
-            
-//            ListPlatter {
-//                Group {
-//                    LabeledContent("Bait", value: fish.bait)
-//                    Divider()
-//                    LabeledContent("Time Caught", value: location.arrivialTime, format: .dateTime.hour().minute())
-//                    Divider()
-//                    LabeledContent("Weight", value: fish.weight, format: .measurement(width: .abbreviated))
-//                    Divider()
-//                    LabeledContent("Length", value: fish.length, format: .measurement(width: .abbreviated))
-//                    Divider()
-//                }
-//
-//
-//                LabeledContent("Water Temp", value: location.waterTemperature, format: .measurement(width: .abbreviated))
-//
-//                Divider()
-//                LabeledContent("Water Clarity", value: location.waterClarity.rawValue)
-//
-//            }
+            ListPlatterFish(fish: fish, location: location)
             
             VStack {
                 MapPreview(center: location.location.coordinate, trip: trip)
@@ -73,14 +53,6 @@ struct MapPreview: View {
     var trip: Trip
     
     var body: some View {
-        
-        
-        //        Map(coordinateRegion: .constant(MKCoordinateRegion(
-        //            center: center,
-        //            latitudinalMeters: 100,
-        //            longitudinalMeters: 100
-        //        )))
-        
         Map(coordinateRegion: .constant(MKCoordinateRegion(
             center: center,
             latitudinalMeters: 100,
@@ -88,35 +60,19 @@ struct MapPreview: View {
         )), annotationItems: trip.locations) { visit in
             MapMarker(coordinate: visit.location.coordinate, tint: .red)
         }
-        
-        
-        
-        
-        //        Color.red
-        
-        //            .onAppear {
-        //                self.region = MKCoordinateRegion(center: center, latitudinalMeters: 100, longitudinalMeters: 100)
-        //            }
-        //            .onChange(of: center) { newValue in
-        //                self.region = MKCoordinateRegion(center: newValue, latitudinalMeters: 100, longitudinalMeters: 100)
-        //            }
-        
-        //            .task(id: center) {
-        //                self.region = MKCoordinateRegion(center: center, latitudinalMeters: 100, longitudinalMeters: 100)
-        //            }
     }
 }
 
-//struct FishView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationStack {
-//            FishView(fish: CaughtFish(id: UUID(),
-//                                      fish: .greenSturgeon,
-//                                      length: Measurement(value: 16, unit: .inches),
-//                                      weight: Measurement(value: 5, unit: .pounds),
-//                                      bait: "Worm",
-//                                      timeCaught: .now),
-//                     location: LocationVisit(id: UUID(), arrivialTime: .now, catches: [.chinook], location: Location(name: "Klineline", coordinate: CLLocationCoordinate2D(latitude: 123, longitude: 32)), waterTemperature: Measurement(value: 32, unit: .fahrenheit), waterClarity: .muddy))
-//        }
-//    }
-//}
+struct FishView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            FishView(fish: CaughtFish(id: UUID(),
+                                      fish: .greenSturgeon,
+                                      length: Measurement(value: 16, unit: .inches),
+                                      weight: Measurement(value: 5, unit: .pounds),
+                                      bait: "Worm",
+                                      timeCaught: .now),
+                     location: LocationVisit(id: UUID(), arrivialTime: .now, catches: [.chinook], location: Location(name: "Klineline", coordinate: CLLocationCoordinate2D(latitude: 123, longitude: 32)), waterTemperature: Measurement(value: 32, unit: .fahrenheit), waterClarity: .muddy), trip: Trip(id: UUID(), firstLocation: LocationVisit(id: UUID(), arrivialTime: .now, catches: [CaughtFish.chinook, CaughtFish.rainbowTrout], location: .klineline, waterTemperature: Measurement(value: 50, unit: .fahrenheit), waterClarity: .muddy)))
+        }
+    }
+}

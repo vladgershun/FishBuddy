@@ -8,77 +8,15 @@
 import SwiftUI
 
 struct LocationView: View {
-    var locations: LocationVisit
+    var location: LocationVisit
     var trip: Trip
     
     var body: some View {
         List {
             VStack {
-                Grid {
-                    GridRow {
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .strokeBorder(.white, lineWidth: 2)
-                            .background(RoundedRectangle(cornerRadius: 20, style: .continuous).foregroundColor(.green.opacity(0.9)))
-                            .aspectRatio(contentMode: .fit)
-                            .overlay(alignment: .topLeading) {
-                                VStack(alignment: .leading) {
-                                    Text("Arrival Time")
-                                        .foregroundColor(.white)
-                                        .font(.title2)
-                                        .fontWeight(.bold)
-                                        .padding([.top, .leading])
-                                    Text(locations.arrivialTime, format: .dateTime)
-                                        .foregroundColor(.white)
-                                        .font(.title2)
-                                        .padding([.leading])
-                                    Text("Fish Caught")
-                                        .foregroundColor(.white)
-                                        .font(.title2)
-                                        .fontWeight(.bold)
-                                        .padding([.top, .leading])
-                                    Text(locations.catches.count, format: .number)
-                                        .foregroundColor(.white)
-                                        .font(.title2)
-                                        .padding([.leading])
-                                }
-                            }
-                        
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .strokeBorder(.white, lineWidth: 2)
-                            .background(RoundedRectangle(cornerRadius: 20, style: .continuous).foregroundColor(.green.opacity(0.9)))
-                            .aspectRatio(contentMode: .fit)
-                            .overlay(alignment: .topLeading) {
-                                VStack(alignment: .leading) {
-                                    Text("Water Temperature")
-                                        .foregroundColor(.white)
-                                        .font(.title2)
-                                        .fontWeight(.bold)
-                                        .padding([.top, .leading])
-                                    Text("location.name")
-                                        .fixedSize(horizontal: false, vertical: true)
-                                        .foregroundColor(.white)
-                                        .font(.title2)
-                                        .padding([.leading])
-                                    Text("Water Clarity")
-                                        .foregroundColor(.white)
-                                        .font(.title2)
-                                        .fontWeight(.bold)
-                                        .padding([.top, .leading])
-                                    Text(locations.waterClarity.rawValue)
-                                        .foregroundColor(.white)
-                                        .font(.title2)
-                                        .padding([.leading])
-                                }
-                            }
-                    }
-                    
-                    
-                    
-                }
-                
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
                     .strokeBorder(.white, lineWidth: 2)
-                    .background(RoundedRectangle(cornerRadius: 20, style: .continuous).foregroundColor(.gray.opacity(0.9)))
+                    .background(RoundedRectangle(cornerRadius: 10, style: .continuous).foregroundColor(.gray.opacity(0.9)))
                     .aspectRatio(contentMode: .fit)
                     .overlay {
                         Text("Weather Info")
@@ -87,6 +25,23 @@ struct LocationView: View {
                             .padding([.leading])
                     }
                 
+                ListPlatterLocation(trip: trip, location: location)
+                    .padding([.top, .bottom], 10)
+                
+                Section {
+                    ForEach(location.catches) { fish in
+                        NavigationLink(fish.fish.species) {
+                            FishView(fish: fish, location: location, trip: trip)
+                        }
+                    }
+//                    .listRowBackground(Color.red)
+                    
+                } header: {
+                    Text("Catches")
+                        .bold()
+                        .edgesIgnoringSafeArea(.leading)
+                    
+                }
                 
             }
             .listRowBackground(Color.clear)
@@ -94,41 +49,18 @@ struct LocationView: View {
             
             
             
-            
-            //                RoundedRectangle(cornerRadius: 20, style: .continuous)
-            //                    .strokeBorder(.white, lineWidth: 2)
-            //
-            //                    .background(RoundedRectangle(cornerRadius: 20, style: .continuous).foregroundColor(.gray.opacity(0.9)))
-            //                    .aspectRatio(contentMode: .fit)
-            
-            Section {
-                ForEach(locations.catches) { fish in
-                    NavigationLink(fish.fish.species) {
-                        FishView(fish: fish, location: locations, trip: trip)
-                    }
-                }
-                .listRowBackground(Color.red)
-
-            } header: {
-                Text("Latest Transactions")
-                    .bold()
-                    .edgesIgnoringSafeArea(.leading)
-                    
-            }
-            
         }
         .listStyle(.insetGrouped)
         .scrollContentBackground(.hidden)
         .listRowInsets(EdgeInsets())
-
-//        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(.blue.opacity(0.7))
-        .navigationTitle(locations.location.name)
+        .navigationTitle(location.location.name)
         .navigationBarTitleDisplayMode(.inline)
     }
 }
 
-//struct LocationView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LocationView(locations: LocationVisit(id: UUID(), arrivialTime: .now, catches: [CaughtFish.chinook, CaughtFish.rainbowTrout], location: .klineline, waterTemperature: Measurement(value: 50, unit: .fahrenheit), waterClarity: .muddy))    }
-//}
+
+
+struct LocationView_Previews: PreviewProvider {
+    static var previews: some View {
+        LocationView(location: LocationVisit(id: UUID(), arrivialTime: .now, catches: [CaughtFish.chinook, CaughtFish.rainbowTrout], location: .klineline, waterTemperature: Measurement(value: 50, unit: .fahrenheit), waterClarity: .muddy), trip: Trip(id: UUID(), firstLocation: LocationVisit(id: UUID(), arrivialTime: .now, catches: [CaughtFish.chinook, CaughtFish.rainbowTrout], location: .klineline, waterTemperature: Measurement(value: 50, unit: .fahrenheit), waterClarity: .muddy)))      }
+}
