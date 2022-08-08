@@ -20,6 +20,8 @@ struct TripDetailView: View {
         GeometryReader { geo in
             List {
                 VStack {
+                    
+                    
                     Map(mapRect: $region, annotationItems: trip.locations) { visit in
                         MapAnnotation(coordinate: visit.location.coordinate) {
                             Text(visit.catches.count, format: .number)
@@ -42,7 +44,10 @@ struct TripDetailView: View {
                         )
                     }
                     .padding()
-                    .frame(maxHeight: geo.size.height * 0.5)
+                    //                        .frame(maxHeight: geo.size.height * 0.5)
+                    .frame(width: 380, height: 320)
+                    
+                    
                     
                     Section {
                         ForEach(trip.locations) { location in

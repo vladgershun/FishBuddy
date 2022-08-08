@@ -31,7 +31,7 @@ struct AddCatchView: View {
                                 Text($0.species)
                             }
                         }
-                        
+
                         Picker("Select Length", selection: $length) {
                             ForEach(0..<80) {
                                 Text(" \($0) Inches" )

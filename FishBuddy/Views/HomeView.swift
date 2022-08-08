@@ -16,9 +16,12 @@ struct HomeView: View {
             NavigationStack {
                 VStack {
                     
-                    //                Image("Logo")
-                    //                    .resizable()
-                    //                    .frame(width: 300, height: 300)
+                    Spacer()
+                    
+                    Text("Fishdex")
+                        .font(.largeTitle)
+                        .bold()
+                    
                     Spacer()
                     
                     RoundedRectangle(cornerRadius: 25, style: .continuous)

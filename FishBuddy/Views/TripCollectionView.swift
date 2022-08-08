@@ -29,7 +29,11 @@ struct TripCollectionView: View {
                     
                     Spacer()
                     
-                    Text(trip.totalFishCaught, format: .number)
+                    HStack {
+                        Text(trip.totalFishCaught, format: .number)
+                        Image(systemName: "fish.fill")
+                    }
+                    
                 }
                 
             }

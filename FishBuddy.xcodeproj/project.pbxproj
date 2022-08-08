@@ -122,7 +122,7 @@
 			children = (
 				F521A5052896E2CC005D8BF6 /* FishBuddyApp.swift */,
 				F5F6050E28972CE5006A40D5 /* Views */,
-				F521A53728970878005D8BF6 /* LoggedTrip */,
+				F521A53728970878005D8BF6 /* LoggedCatch */,
 				F521A5092896E2CD005D8BF6 /* Assets.xcassets */,
 				F521A50B2896E2CD005D8BF6 /* Preview Content */,
 			);
@@ -154,7 +154,7 @@
 			path = FishBuddyUITests;
 			sourceTree = "<group>";
 		};
-		F521A53728970878005D8BF6 /* LoggedTrip */ = {
+		F521A53728970878005D8BF6 /* LoggedCatch */ = {
 			isa = PBXGroup;
 			children = (
 				F521A53528970835005D8BF6 /* TripCollection.swift */,
@@ -164,7 +164,7 @@
 				F521A52F2896EE6C005D8BF6 /* CaughtFish.swift */,
 				F5F6050F28972DBC006A40D5 /* Fish.swift */,
 			);
-			path = LoggedTrip;
+			path = LoggedCatch;
 			sourceTree = "<group>";
 		};
 		F5F6050E28972CE5006A40D5 /* Views */ = {
