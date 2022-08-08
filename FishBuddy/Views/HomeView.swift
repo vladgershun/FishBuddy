@@ -52,7 +52,7 @@ struct HomeView: View {
                                 HStack {
                                     Image(systemName: "book.fill")
                                         .foregroundColor(.white)
-                                    Text("Trip Logs")
+                                    Text("Trips")
                                         .font(.title2)
                                         .foregroundColor(.white)
                                 }

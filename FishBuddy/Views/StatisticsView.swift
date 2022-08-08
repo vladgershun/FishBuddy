@@ -5,6 +5,7 @@
 //  Created by Vlad Gershun on 7/31/22.
 //
 
+import Charts
 import SwiftUI
 
 struct StatisticsView: View {
