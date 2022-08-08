@@ -12,6 +12,7 @@ struct LocationVisit: Identifiable {
     
     enum WaterClarity: String {
         case clear = "Clear"
+        case stained = "Stained"
         case muddy = "Muddy"
     }
     
@@ -19,6 +20,7 @@ struct LocationVisit: Identifiable {
     let arrivialTime: Date
     var catches: [CaughtFish]
     let location: Location
+    
     //add weather with WeatherKit
     
     ///Temperature of the water at location
@@ -29,7 +31,7 @@ struct LocationVisit: Identifiable {
 
 extension LocationVisit {
     
-    static let klineline = LocationVisit(id: UUID(), arrivialTime: .now, catches: [CaughtFish.chinook, CaughtFish.rainbowTrout], location: .klineline, waterTemperature: Measurement(value: 50, unit: .fahrenheit), waterClarity: .muddy)
+    static let klineline = LocationVisit(id: UUID(), arrivialTime: .now, catches: [CaughtFish.chinook, CaughtFish.rainbowTrout], location: .klineline, waterTemperature: Measurement(value: 50, unit: .fahrenheit)/*, waterClarity: .muddy*/)
     
     static let columbiaRiver = LocationVisit(id: UUID(), arrivialTime: .now, catches: [CaughtFish.chinook, CaughtFish.bass], location: .columbiaRiver, waterTemperature: Measurement(value: 39, unit: .fahrenheit), waterClarity: .clear)
     

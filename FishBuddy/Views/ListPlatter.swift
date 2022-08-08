@@ -125,7 +125,7 @@ struct ListPlatterFish/*<Content: View>*/: View {
                 Spacer()
                 
                 HStack {
-                    Text(location.waterClarity?.rawValue ?? "--")
+                    Text(location.waterClarity?.rawValue ?? "---")
                         .font(.title3)
                     Image(systemName: "drop.fill")
                 }
