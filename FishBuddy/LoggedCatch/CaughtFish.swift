@@ -13,8 +13,8 @@ struct CaughtFish: Identifiable {
     let id: UUID
     var fish: Fish
     /// Length in inches
-    var length: Measurement<UnitLength>
-    var weight: Measurement<UnitMass>
+    var length: Measurement<UnitLength>?
+    var weight: Measurement<UnitMass>?
     var bait: String
     let timeCaught: Date
     

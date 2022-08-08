@@ -100,14 +100,14 @@ struct ListPlatterFish/*<Content: View>*/: View {
             HStack {
                 HStack {
                     Image(systemName: "scalemass.fill")
-                    Text(fish.weight, format: .measurement(width: .abbreviated))
+                    Text(fish.weight ?? Measurement(value: 0, unit: .pounds), format: .measurement(width: .abbreviated))
                         .font(.title3)
                 }
-                
+
                 Spacer()
                 
                 HStack {
-                    Text(location.waterTemperature, format: .measurement(width: .abbreviated))
+                    Text(location.waterTemperature ?? Measurement(value: 0, unit: .fahrenheit), format: .measurement(width: .abbreviated))
                         .font(.title3)
                     Image(systemName: "thermometer.medium")
                 }
@@ -118,14 +118,14 @@ struct ListPlatterFish/*<Content: View>*/: View {
             HStack {
                 HStack {
                     Image(systemName: "ruler.fill")
-                    Text(fish.length, format: .measurement(width: .abbreviated))
+                    Text(fish.length ?? Measurement(value: 0, unit: .inches), format: .measurement(width: .abbreviated))
                         .font(.title3)
                 }
                 
                 Spacer()
                 
                 HStack {
-                    Text(location.waterClarity.rawValue)
+                    Text(location.waterClarity?.rawValue ?? "--")
                         .font(.title3)
                     Image(systemName: "drop.fill")
                 }

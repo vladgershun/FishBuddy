@@ -22,8 +22,8 @@ struct LocationVisit: Identifiable {
     //add weather with WeatherKit
     
     ///Temperature of the water at location
-    var waterTemperature: Measurement<UnitTemperature>
-    var waterClarity: WaterClarity
+    var waterTemperature: Measurement<UnitTemperature>?
+    var waterClarity: WaterClarity?
     
 }
 
