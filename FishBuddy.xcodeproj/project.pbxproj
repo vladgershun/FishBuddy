@@ -23,6 +23,7 @@
 		F521A539289708DC005D8BF6 /* TripCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A538289708DC005D8BF6 /* TripCollectionView.swift */; };
 		F521A53B28970E45005D8BF6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A53A28970E45005D8BF6 /* Location.swift */; };
 		F521A53D2897142D005D8BF6 /* TripDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A53C2897142D005D8BF6 /* TripDetailView.swift */; };
+		F53BDED128B47BE600E16635 /* AddCatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53BDED028B47BE600E16635 /* AddCatchViewModel.swift */; };
 		F549EF14289EDEE70062E280 /* ListPlatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F549EF13289EDEE70062E280 /* ListPlatter.swift */; };
 		F549EF1728A0E6730062E280 /* AddNewCatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F549EF1628A0E6730062E280 /* AddNewCatch.swift */; };
 		F5AA34C1289878FF0096FCAB /* FishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AA34C0289878FF0096FCAB /* FishView.swift */; };
@@ -68,6 +69,7 @@
 		F521A53A28970E45005D8BF6 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		F521A53C2897142D005D8BF6 /* TripDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailView.swift; sourceTree = "<group>"; };
 		F531A4AC28A83CD80016759E /* CRDTs */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CRDTs; sourceTree = "<group>"; };
+		F53BDED028B47BE600E16635 /* AddCatchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCatchViewModel.swift; sourceTree = "<group>"; };
 		F549EF13289EDEE70062E280 /* ListPlatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPlatter.swift; sourceTree = "<group>"; };
 		F549EF1628A0E6730062E280 /* AddNewCatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCatch.swift; sourceTree = "<group>"; };
 		F5AA34C0289878FF0096FCAB /* FishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishView.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				F549EF1628A0E6730062E280 /* AddNewCatch.swift */,
+				F53BDED028B47BE600E16635 /* AddCatchViewModel.swift */,
 			);
 			path = NewCatch;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				F5F60512289736C2006A40D5 /* AddCatchView.swift in Sources */,
 				F521A5322896F0F4005D8BF6 /* LocationVisit.swift in Sources */,
 				F549EF14289EDEE70062E280 /* ListPlatter.swift in Sources */,
+				F53BDED128B47BE600E16635 /* AddCatchViewModel.swift in Sources */,
 				F521A5342896F25C005D8BF6 /* Trip.swift in Sources */,
 				F5AA34C1289878FF0096FCAB /* FishView.swift in Sources */,
 				F521A5302896EE6C005D8BF6 /* CaughtFish.swift in Sources */,
