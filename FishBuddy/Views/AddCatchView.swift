@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddCatchView: View {
     
-    @StateObject private var viewModel = AddCatchViewModel()
+    @StateObject private var viewModel = AddCatchViewModel(catchSubmission: StubCatchSubmissionService())
     @FocusState private var weightIsFocused: Bool
     @FocusState private var baitIsFocused: Bool
 
@@ -28,19 +28,19 @@ struct AddCatchView: View {
 
                         Picker("Select Length", selection: $viewModel.length) {
                             ForEach(0..<80) {
-                                Text(" \($0) Inches" )
+                                Text(" \($0) Inches" ).tag(Measurement(value: Double($0), unit: UnitLength.inches))
                             }
                         }
                         
                         Picker("Select Weight", selection: $viewModel.weight) {
                             ForEach(0..<100) {
-                                Text(" \($0) lbs" )
+                                Text(" \($0) lbs" ).tag(Measurement(value: Double($0), unit: UnitMass.pounds))
                             }
                         }
                           
                         Picker("Select Water Temperature", selection: $viewModel.waterTemperature) {
                             ForEach(0..<80) {
-                                Text(" \($0) °F" )
+                                Text(" \($0) °F" ).tag(Measurement(value: Double($0), unit: UnitTemperature.fahrenheit))
                             }
                         }
                         
@@ -54,7 +54,17 @@ struct AddCatchView: View {
                     Section {
                         HStack {
                             Spacer()
-                            Button("Add Catch") { dismiss() }
+                            
+                            Button("Add Catch") {
+                                Task {
+                                    if await viewModel.submit() {
+                                        dismiss()
+                                    }
+                                    //Errors
+                                }
+                                
+                            }.disabled(!viewModel.isValid)
+                            
                             Spacer()
                         }
                     }
@@ -66,6 +76,7 @@ struct AddCatchView: View {
                     Button("Done") {
                         baitIsFocused = false
                     }
+                    
                 }
             }
             .scrollContentBackground(.hidden)
