@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol LocationService {
-    
+    func getCurrentLocation() async throws -> CLLocationCoordinate2D
 }
 
 protocol LocationGroupingService {
-    
+    func nearestSignificantLocation(coordinate: CLLocationCoordinate2D) -> Location
 }
 
 protocol CatchSubmissionService {
@@ -26,6 +27,20 @@ struct CatchCreationRequest {
     var weight: Measurement<UnitMass>
     var waterTemperature: Measurement<UnitTemperature>
     var bait: String
+    var coordinate: CLLocationCoordinate2D
+    var location: Location
+}
+
+class StubLocationService: LocationService {
+    func getCurrentLocation() async throws -> CLLocationCoordinate2D {
+        return Location.klineline.coordinate
+    }
+}
+
+class StubLocationGroupingService: LocationGroupingService {
+    func nearestSignificantLocation(coordinate: CLLocationCoordinate2D) -> Location {
+        Location(name: "Wahoo", coordinate: coordinate)
+    }
 }
 
 class StubCatchSubmissionService: CatchSubmissionService {
@@ -36,8 +51,10 @@ class StubCatchSubmissionService: CatchSubmissionService {
 
 class AddCatchViewModel: ObservableObject {
     
-    init(catchSubmission: CatchSubmissionService) {
+    init(catchSubmission: any CatchSubmissionService, locationService: any LocationService, locationGrouping: any LocationGroupingService) {
         self.catchSubmission = catchSubmission
+        self.locationService = locationService
+        self.locationGrouping = locationGrouping
     }
     
     //no coordinates
@@ -52,8 +69,12 @@ class AddCatchViewModel: ObservableObject {
     @Published var waterTemperature: Measurement<UnitTemperature> = Measurement(value: 50, unit: .fahrenheit)
     @Published var timeCaught = Date.now
     @Published var bait = ""
+    var coordinate: CLLocationCoordinate2D?
+    var location: Location?
     
     let catchSubmission: any CatchSubmissionService
+    let locationService: any LocationService
+    let locationGrouping: any LocationGroupingService
     
     var isValid: Bool {
         if weight.value <= 0 { return false }
@@ -63,7 +84,14 @@ class AddCatchViewModel: ObservableObject {
     
     ///true if no error
     func submit() async -> Bool {
-        await catchSubmission.submitCatch(CatchCreationRequest(species: fish, length: length, weight: weight, waterTemperature: waterTemperature, bait: bait))
+        guard let coordinate = try? await locationService.getCurrentLocation() else {
+            return false
+        }
+        
+        let location = locationGrouping.nearestSignificantLocation(coordinate: coordinate)
+        
+        await catchSubmission.submitCatch(CatchCreationRequest(species: fish, length: length, weight: weight, waterTemperature: waterTemperature, bait: bait, coordinate: coordinate, location: location))
+        
         return true
     }
     
