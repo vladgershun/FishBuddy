@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var addTripShowing = false
-    let universalSize = UIScreen.main.bounds
     
     var body: some View {
         GeometryReader { geo in
@@ -29,15 +28,13 @@ struct HomeView: View {
                         .frame(width: geo.size.width * 0.75, height: geo.size.height * 0.1)
                         .background(RoundedRectangle(cornerRadius: 25, style: .continuous).foregroundColor(.green.opacity(0.6)))
                         .overlay(
-                            HStack {
+                            HStack{
                                 Image(systemName: "fish.fill")
                                     .foregroundColor(.white)
                                 Text("Add Catch")
                                     .font(.title2)
                                     .foregroundColor(.white)
-                                
                             }
-                            
                         )
                         .onTapGesture {
                             addTripShowing = true

@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct TripCollectionView: View {
-    
-//    init(){
-//        UITableView.appearance().backgroundColor = .clear
-//        UITableViewCell.appearance().backgroundColor = .red
-//    }
-    
+        
     @State var tripCollection = TripCollection.trips
     
     var body: some View {

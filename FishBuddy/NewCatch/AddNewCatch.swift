@@ -20,7 +20,7 @@ func isCurrentLocation() -> Bool {
 
 //  Generate new trip for current day
 func newTrip() {
-    
+     
 }
 
 //  Generate new location
