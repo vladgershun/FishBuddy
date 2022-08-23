@@ -31,7 +31,7 @@ struct LocationView: View {
                 Section {
                     ForEach(location.catches) { fish in
                         NavigationLink(fish.fish.species) {
-                            FishView(fish: fish, location: location, trip: trip)
+                            FishView(fish: fish, visit: location)
                         }
                     }
 //                    .listRowBackground(Color.red)

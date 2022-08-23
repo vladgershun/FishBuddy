@@ -8,6 +8,12 @@
 import Foundation
 import CoreLocation
 
+enum LoadingState<Value> {
+    case loading
+    case loaded(Value)
+    case failed(any Error)
+}
+
 protocol LocationService {
     func getCurrentLocation() async throws -> CLLocationCoordinate2D
 }
@@ -34,6 +40,13 @@ struct CatchCreationRequest {
 class StubLocationService: LocationService {
     func getCurrentLocation() async throws -> CLLocationCoordinate2D {
         return Location.klineline.coordinate
+    }
+}
+
+class DeniedLocationService: LocationService {
+    func getCurrentLocation() async throws -> CLLocationCoordinate2D {
+        try await Task.sleep(nanoseconds: 2000000000)
+        throw CLError(.denied)
     }
 }
 
@@ -69,8 +82,8 @@ class AddCatchViewModel: ObservableObject {
     @Published var waterTemperature: Measurement<UnitTemperature> = Measurement(value: 50, unit: .fahrenheit)
     @Published var timeCaught = Date.now
     @Published var bait = ""
-    var coordinate: CLLocationCoordinate2D?
-    var location: Location?
+    @Published var coordinate: LoadingState<CLLocationCoordinate2D> = .loading
+    @Published var location: LoadingState<Location> = .loading
     
     let catchSubmission: any CatchSubmissionService
     let locationService: any LocationService
@@ -78,7 +91,10 @@ class AddCatchViewModel: ObservableObject {
     
     var isValid: Bool {
         if weight.value <= 0 { return false }
-        if length.value <= 0 { return false}
+        if length.value <= 0 { return false }
+        if case .loading = location {
+            return false
+        }
         return true
     }
     
@@ -93,6 +109,19 @@ class AddCatchViewModel: ObservableObject {
         await catchSubmission.submitCatch(CatchCreationRequest(species: fish, length: length, weight: weight, waterTemperature: waterTemperature, bait: bait, coordinate: coordinate, location: location))
         
         return true
+    }
+    
+    
+    func task() async {
+        do {
+            let coordinate = try await locationService.getCurrentLocation()
+            let location = locationGrouping.nearestSignificantLocation(coordinate: coordinate)
+            self.coordinate = .loaded(coordinate)
+            self.location = .loaded(location)
+        } catch {
+            self.coordinate = .failed(error)
+            self.location = .failed(error)
+        }
     }
     
 }

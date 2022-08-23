@@ -9,7 +9,10 @@
 import Foundation
 import MapKit
 
-struct Location: Hashable {
+struct Location: Hashable, Identifiable {
+    var id: String {
+        return name
+    }
     let name: String
     let coordinate: CLLocationCoordinate2D
 }

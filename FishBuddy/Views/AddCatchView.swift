@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddCatchView: View {
     
-    @StateObject private var viewModel = AddCatchViewModel(catchSubmission: StubCatchSubmissionService(), locationService: StubLocationService(), locationGrouping: StubLocationGroupingService())
+    @StateObject private var viewModel = AddCatchViewModel(catchSubmission: StubCatchSubmissionService(), locationService: DeniedLocationService(), locationGrouping: StubLocationGroupingService())
     @FocusState private var weightIsFocused: Bool
     @FocusState private var baitIsFocused: Bool
 
@@ -49,6 +49,28 @@ struct AddCatchView: View {
 
                         
                         Text("Add Image")
+                        
+                        switch viewModel.location {
+                        case .loaded(let location):
+                            VStack {
+                                MapPreview(location: location)
+                                    .aspectRatio(16/11, contentMode: .fill)
+                                //                    .clipShape(CutoffPlatterShape())
+                                
+                                Text(location.name)
+                                    .padding([.leading, .bottom], 10)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .listRowSeparator(.hidden)
+                            .background(Color(.secondarySystemBackground), in: RoundedRectangle.platter)
+                            .padding()
+                            
+                        case .loading:
+                            ProgressView()
+                            
+                        case .failed(_):
+                            Text("No Map")
+                        }                        
                     }
                     
                     Section {
@@ -68,6 +90,8 @@ struct AddCatchView: View {
                             Spacer()
                         }
                     }
+                    
+                    
                 }
             }
             .toolbar {
@@ -80,6 +104,9 @@ struct AddCatchView: View {
                 }
             }
             .scrollContentBackground(.hidden)
+        }
+        .task {
+            await viewModel.task()
         }
         
         

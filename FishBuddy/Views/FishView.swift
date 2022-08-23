@@ -10,8 +10,8 @@ import MapKit
 
 struct FishView: View {
     var fish: CaughtFish
-    var location: LocationVisit
-    var trip: Trip
+    var visit: LocationVisit
+
     
     var body: some View {
         List {
@@ -23,14 +23,14 @@ struct FishView: View {
                 .clipShape(RoundedRectangle.platter)
                 .listRowSeparator(.hidden)
             
-            ListPlatterFish(fish: fish, location: location)
+            ListPlatterFish(fish: fish, location: visit)
             
             VStack {
-                MapPreview(center: location.location.coordinate, trip: trip)
+                MapPreview(location: visit.location)
                     .aspectRatio(16/11, contentMode: .fill)
                 //                    .clipShape(CutoffPlatterShape())
                 
-                Text(location.location.name)
+                Text(visit.location.name)
                     .padding([.leading, .bottom], 10)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
@@ -48,31 +48,29 @@ struct FishView: View {
 }
 
 struct MapPreview: View {
-    var center: CLLocationCoordinate2D
-    
-    var trip: Trip
+    var location: Location
     
     var body: some View {
         Map(coordinateRegion: .constant(MKCoordinateRegion(
-            center: center,
+            center: location.coordinate,
             latitudinalMeters: 100,
             longitudinalMeters: 100
-        )), annotationItems: trip.locations) { visit in
-            MapMarker(coordinate: visit.location.coordinate, tint: .red)
+        )), annotationItems: [location]) { location in
+            MapMarker(coordinate: location.coordinate, tint: .red)
         }
     }
 }
 
-struct FishView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            FishView(fish: CaughtFish(id: UUID(),
-                                      fish: .greenSturgeon,
-                                      length: Measurement(value: 16, unit: .inches),
-                                      weight: Measurement(value: 5, unit: .pounds),
-                                      bait: "Worm",
-                                      timeCaught: .now),
-                     location: LocationVisit(id: UUID(), arrivialTime: .now, catches: [.chinook], location: Location(name: "Klineline", coordinate: CLLocationCoordinate2D(latitude: 123, longitude: 32)), waterTemperature: Measurement(value: 32, unit: .fahrenheit), waterClarity: .muddy), trip: Trip(id: UUID(), firstLocation: LocationVisit(id: UUID(), arrivialTime: .now, catches: [CaughtFish.chinook, CaughtFish.rainbowTrout], location: .klineline, waterTemperature: Measurement(value: 50, unit: .fahrenheit), waterClarity: .muddy)))
-        }
-    }
-}
+//struct FishView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationStack {
+//            FishView(fish: CaughtFish(id: UUID(),
+//                                      fish: .greenSturgeon,
+//                                      length: Measurement(value: 16, unit: .inches),
+//                                      weight: Measurement(value: 5, unit: .pounds),
+//                                      bait: "Worm",
+//                                      timeCaught: .now),
+//                     location: LocationVisit(id: UUID(), arrivialTime: .now, catches: [.chinook], location: Location(name: "Klineline", coordinate: CLLocationCoordinate2D(latitude: 123, longitude: 32)), waterTemperature: Measurement(value: 32, unit: .fahrenheit), waterClarity: .muddy), trip: Trip(id: UUID(), firstLocation: LocationVisit(id: UUID(), arrivialTime: .now, catches: [CaughtFish.chinook, CaughtFish.rainbowTrout], location: .klineline, waterTemperature: Measurement(value: 50, unit: .fahrenheit), waterClarity: .muddy)))
+//        }
+//    }
+//}
