@@ -12,6 +12,14 @@ enum LoadingState<Value> {
     case loading
     case loaded(Value)
     case failed(any Error)
+    
+    var value: Value? {
+        if case .loaded(let value) = self {
+            return value
+        } else {
+            return nil
+        }
+    }
 }
 
 protocol LocationService {
@@ -33,8 +41,8 @@ struct CatchCreationRequest {
     var weight: Measurement<UnitMass>
     var waterTemperature: Measurement<UnitTemperature>
     var bait: String
-    var coordinate: CLLocationCoordinate2D
-    var location: Location
+    var coordinate: CLLocationCoordinate2D?
+    var location: Location?
 }
 
 class StubLocationService: LocationService {
@@ -90,24 +98,24 @@ class AddCatchViewModel: ObservableObject {
     let locationGrouping: any LocationGroupingService
     
     var isValid: Bool {
-        if weight.value <= 0 { return false }
-        if length.value <= 0 { return false }
+        creationRequest != nil
+    }
+    
+    private var creationRequest: CatchCreationRequest? {
+        if weight.value <= 0 { return nil }
+        if length.value <= 0 { return nil }
         if case .loading = location {
-            return false
+            return nil
         }
-        return true
+        return CatchCreationRequest(species: fish, length: length, weight: weight, waterTemperature: waterTemperature, bait: bait, coordinate: coordinate.value, location: location.value)
     }
     
     ///true if no error
     func submit() async -> Bool {
-        guard let coordinate = try? await locationService.getCurrentLocation() else {
+        guard let creationRequest = creationRequest else {
             return false
         }
-        
-        let location = locationGrouping.nearestSignificantLocation(coordinate: coordinate)
-        
-        await catchSubmission.submitCatch(CatchCreationRequest(species: fish, length: length, weight: weight, waterTemperature: waterTemperature, bait: bait, coordinate: coordinate, location: location))
-        
+        await catchSubmission.submitCatch(creationRequest)
         return true
     }
     
