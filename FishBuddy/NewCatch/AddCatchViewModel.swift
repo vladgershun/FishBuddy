@@ -53,7 +53,7 @@ class StubLocationService: LocationService {
 
 class DeniedLocationService: LocationService {
     func getCurrentLocation() async throws -> CLLocationCoordinate2D {
-        try await Task.sleep(nanoseconds: 2000000000)
+        try await Task.sleep(nanoseconds: 3000000000)
         throw CLError(.denied)
     }
 }
