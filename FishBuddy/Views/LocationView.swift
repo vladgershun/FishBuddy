@@ -53,7 +53,7 @@ struct LocationView: View {
         .listStyle(.insetGrouped)
         .scrollContentBackground(.hidden)
         .listRowInsets(EdgeInsets())
-        .navigationTitle(location.location.name)
+        .navigationTitle(location.location!.name)
         .navigationBarTitleDisplayMode(.inline)
     }
 }

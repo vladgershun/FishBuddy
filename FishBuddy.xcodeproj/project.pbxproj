@@ -13,7 +13,7 @@
 		F521A5082896E2CC005D8BF6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A5072896E2CC005D8BF6 /* HomeView.swift */; };
 		F521A50A2896E2CD005D8BF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F521A5092896E2CD005D8BF6 /* Assets.xcassets */; };
 		F521A50D2896E2CD005D8BF6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F521A50C2896E2CD005D8BF6 /* Preview Assets.xcassets */; };
-		F521A5172896E2CD005D8BF6 /* FishBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A5162896E2CD005D8BF6 /* FishBuddyTests.swift */; };
+		F521A5172896E2CD005D8BF6 /* TripControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A5162896E2CD005D8BF6 /* TripControllerTests.swift */; };
 		F521A5212896E2CD005D8BF6 /* FishBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A5202896E2CD005D8BF6 /* FishBuddyUITests.swift */; };
 		F521A5232896E2CD005D8BF6 /* FishBuddyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A5222896E2CD005D8BF6 /* FishBuddyUITestsLaunchTests.swift */; };
 		F521A5302896EE6C005D8BF6 /* CaughtFish.swift in Sources */ = {isa = PBXBuildFile; fileRef = F521A52F2896EE6C005D8BF6 /* CaughtFish.swift */; };
@@ -57,7 +57,7 @@
 		F521A5092896E2CD005D8BF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F521A50C2896E2CD005D8BF6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F521A5122896E2CD005D8BF6 /* FishBuddyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FishBuddyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F521A5162896E2CD005D8BF6 /* FishBuddyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishBuddyTests.swift; sourceTree = "<group>"; };
+		F521A5162896E2CD005D8BF6 /* TripControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripControllerTests.swift; sourceTree = "<group>"; };
 		F521A51C2896E2CD005D8BF6 /* FishBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FishBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F521A5202896E2CD005D8BF6 /* FishBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishBuddyUITests.swift; sourceTree = "<group>"; };
 		F521A5222896E2CD005D8BF6 /* FishBuddyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishBuddyUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -147,7 +147,7 @@
 		F521A5152896E2CD005D8BF6 /* FishBuddyTests */ = {
 			isa = PBXGroup;
 			children = (
-				F521A5162896E2CD005D8BF6 /* FishBuddyTests.swift */,
+				F521A5162896E2CD005D8BF6 /* TripControllerTests.swift */,
 			);
 			path = FishBuddyTests;
 			sourceTree = "<group>";
@@ -352,7 +352,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F521A5172896E2CD005D8BF6 /* FishBuddyTests.swift in Sources */,
+				F521A5172896E2CD005D8BF6 /* TripControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +431,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -485,7 +484,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -563,7 +561,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = VStudios.FishBuddyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -582,7 +579,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = VStudios.FishBuddyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

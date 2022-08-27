@@ -19,7 +19,7 @@ struct TripCollectionView: View {
                 HStack {
                     VStack(alignment: .leading) {
                         Text(trip.arrivalDate, format: .dateTime.day().month())
-                        Text(trip.locations.map(\.location.name), format: .list(type: .and))
+                        Text(trip.locations.map { $0.location?.name ?? "Unknown Location" }, format: .list(type: .and))
                     }
                     
                     Spacer()

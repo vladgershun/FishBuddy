@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct LocationVisit: Identifiable {
+struct LocationVisit: Identifiable, Hashable {
     
-    enum WaterClarity: String {
+    enum WaterClarity: String, Hashable {
         case clear = "Clear"
         case stained = "Stained"
         case muddy = "Muddy"
@@ -19,7 +19,7 @@ struct LocationVisit: Identifiable {
     let id: UUID
     let arrivialTime: Date
     var catches: [CaughtFish]
-    let location: Location
+    let location: Location?
     
     //add weather with WeatherKit
     

@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-struct Trip: Identifiable {
+struct Trip: Identifiable, Hashable {
     
     let id: UUID
     /// Non-empty list of locations
@@ -32,15 +32,15 @@ struct Trip: Identifiable {
         locations.lazy.map(\.catches.count).reduce(0, +)
     }
     
-    var boundingRegion: MKMapRect {
-        MKMapRect(containing: locations.map { visit in
-            MKMapPoint(visit.location.coordinate)
-        })!
+    var boundingRegion: MKMapRect? {
+        MKMapRect(containing: locations.lazy.compactMap { $0.location?.coordinate }.map { coordinate in
+            MKMapPoint(coordinate)
+        })
     }
 }
 
 extension MKMapRect {
-    init?(containing points: [MKMapPoint]) {
+    init?(containing points: some Collection<MKMapPoint>) {
         guard !points.isEmpty else { return nil }
         var result = MKMapRect(origin: points.first!, size: MKMapSize())
         for point in points.dropFirst() {

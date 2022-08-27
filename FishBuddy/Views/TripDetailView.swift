@@ -12,6 +12,7 @@ struct TripDetailView: View {
     var trip: Trip
     
     @State private var region = MKMapRect.world
+    @State private var hasRealLocations = true
     
     /// Padding around annotations in screen points.
     @ScaledMetric(relativeTo: .body) private var mapPadding = 30.0
@@ -21,17 +22,25 @@ struct TripDetailView: View {
             List {
                 VStack {
                     
-                    
-                    Map(mapRect: $region, annotationItems: trip.locations) { visit in
-                        MapAnnotation(coordinate: visit.location.coordinate) {
-                            Text(visit.catches.count, format: .number)
-                                .padding()
-                                .background(.blue, in: Circle())
+                    ZStack {
+                        if hasRealLocations {
+                            Map(mapRect: $region, annotationItems: trip.locations.filter { visit in visit.location != nil }) { visit in
+                                MapAnnotation(coordinate: visit.location!.coordinate) {
+                                    Text(visit.catches.count, format: .number)
+                                        .padding()
+                                        .background(.blue, in: Circle())
+                                }
+                            }
                         }
                     }
                     .border(.white, width: 2)
                     .onAppear {
-                        region = trip.boundingRegion
+                        guard let boundingRegion = trip.boundingRegion else {
+                            hasRealLocations = false
+                            return
+                        }
+                        hasRealLocations = true
+                        region = boundingRegion
                         func scaleScreenWidth(_ screenValue: CGFloat) -> Double {
                             region.width / geo.size.width * screenValue
                         }
@@ -50,11 +59,11 @@ struct TripDetailView: View {
                     
                     
                     Section {
-                        ForEach(trip.locations) { location in
+                        ForEach(trip.locations.filter { visit in visit.location != nil }) { location in
                             NavigationLink {
                                 LocationView(location: location, trip: trip)
                             } label: {
-                                Text(location.location.name)
+                                Text(location.location!.name)
                             }
                         }
                     } header: {

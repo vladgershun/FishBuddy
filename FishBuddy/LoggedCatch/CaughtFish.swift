@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CaughtFish: Identifiable {
+struct CaughtFish: Identifiable, Hashable {
     
     let id: UUID
     var fish: Fish

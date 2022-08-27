@@ -25,18 +25,20 @@ struct FishView: View {
             
             ListPlatterFish(fish: fish, location: visit)
             
-            VStack {
-                MapPreview(location: visit.location)
-                    .aspectRatio(16/11, contentMode: .fill)
-                //                    .clipShape(CutoffPlatterShape())
-                
-                Text(visit.location.name)
-                    .padding([.leading, .bottom], 10)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+            if let location = visit.location {
+                VStack {
+                    MapPreview(location: location)
+                        .aspectRatio(16/11, contentMode: .fill)
+                    //                    .clipShape(CutoffPlatterShape())
+                    
+                    Text(location.name)
+                        .padding([.leading, .bottom], 10)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .listRowSeparator(.hidden)
+                .background(Color(.secondarySystemBackground), in: RoundedRectangle.platter)
+                .padding()
             }
-            .listRowSeparator(.hidden)
-            .background(Color(.secondarySystemBackground), in: RoundedRectangle.platter)
-            .padding()
             
             
         }
