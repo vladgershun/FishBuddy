@@ -16,7 +16,8 @@ struct Trip: Identifiable, Hashable {
     var locations: [LocationVisit]
     
     var firstLocation: LocationVisit {
-        locations.first!
+        get {locations.first! }
+        set { locations[0] = newValue }
     }
     
     init(id: UUID, firstLocation: LocationVisit) {
