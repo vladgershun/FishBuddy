@@ -9,10 +9,10 @@ import SwiftUI
 
 struct TripCollectionView: View {
         
-    @State var tripCollection = TripCollection.trips
+    var trips: [Trip]
     
     var body: some View {
-        List(tripCollection.trips) { trip in
+        List(trips) { trip in
             NavigationLink {
                 TripDetailView(trip: trip)
             } label: {

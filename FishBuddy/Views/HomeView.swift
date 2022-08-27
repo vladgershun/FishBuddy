@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var addTripShowing = false
+    @StateObject private var tripController = TripController(clock: { Date.now })
     
     var body: some View {
         GeometryReader { geo in
@@ -40,7 +41,7 @@ struct HomeView: View {
                             addTripShowing = true
                         }
                     
-                    NavigationLink(destination: TripCollectionView()) {
+                    NavigationLink(destination: TripCollectionView(trips: tripController.trips)) {
                         RoundedRectangle(cornerRadius: 25, style: .continuous)
                             .strokeBorder(.white, lineWidth: 2)
                             .frame(width: geo.size.width * 0.75, height: geo.size.height * 0.1)
@@ -78,7 +79,7 @@ struct HomeView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .sheet(isPresented: $addTripShowing) {
-                    AddCatchView()
+                    AddCatchView(catchSubmissionService: tripController)
                 }
             }
             

@@ -9,9 +9,13 @@ import SwiftUI
 
 struct AddCatchView: View {
     
-    @StateObject private var viewModel = AddCatchViewModel(catchSubmission: StubCatchSubmissionService(), locationService: DeniedLocationService(), locationGrouping: StubLocationGroupingService())
+    @StateObject private var viewModel: AddCatchViewModel
     @FocusState private var weightIsFocused: Bool
     @FocusState private var baitIsFocused: Bool
+    
+    init(catchSubmissionService: CatchSubmissionService) {
+        _viewModel = StateObject(wrappedValue: AddCatchViewModel(catchSubmission: catchSubmissionService, locationService: DeniedLocationService(), locationGrouping: StubLocationGroupingService()))
+    }
 
     @Environment(\.dismiss) var dismiss
     

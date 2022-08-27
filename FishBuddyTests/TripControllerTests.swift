@@ -6,46 +6,9 @@
 //
 
 import XCTest
+import Combine
 @testable import FishBuddy
 
-
-//  func addCatch()
-//  published list of trips
-
-final class TripController {
-    
-    private(set) var trips: [Trip]
-    
-    let clock: () -> Date
-    
-    init(clock: @escaping () -> Date) {
-        self.trips = []
-        self.clock = clock
-    }
-    
-    func addCatch(_ catchRequest: CatchCreationRequest) {
-        
-//        if var existingTrip = trips.last, Calendar.current.isDate(existingTrip.arrivalDate, inSameDayAs: clock()) {
-        if let tripIndex = trips.firstIndex(where: { Calendar.current.isDate($0.arrivalDate, inSameDayAs: clock()) }) {
-            var existingTrip = trips[tripIndex]
-            defer { trips[tripIndex] = existingTrip }
-            if existingTrip.firstLocation.location == catchRequest.location {
-                let `catch` = CaughtFish(id: UUID(), fish: catchRequest.species, length: catchRequest.length, weight: catchRequest.weight, bait: catchRequest.bait, timeCaught: clock())
-                existingTrip.firstLocation.catches.append(`catch`)
-            } else {
-                let `catch` = CaughtFish(id: UUID(), fish: catchRequest.species, length: catchRequest.length, weight: catchRequest.weight, bait: catchRequest.bait, timeCaught: clock())
-                let newVisit = LocationVisit(id: UUID(), arrivialTime: clock(), catches: [`catch`], location: catchRequest.location)
-                existingTrip.locations.append(newVisit)
-            }
-            
-        } else {
-            let `catch` = CaughtFish(id: UUID(), fish: catchRequest.species, length: catchRequest.length, weight: catchRequest.weight, bait: catchRequest.bait, timeCaught: clock())
-            let newVisit = LocationVisit(id: UUID(), arrivialTime: clock(), catches: [`catch`], location: catchRequest.location)
-            let newTrip = Trip(id: UUID(), firstLocation: newVisit)
-            trips.append(newTrip)
-        }
-    }
-}
 
 final class TripControllerTests: XCTestCase {
     
