@@ -17,7 +17,7 @@ final class TripController: ObservableObject {
         self.trips = []
         self.clock = clock
     }
-    
+    @MainActor
     func addCatch(_ catchRequest: CatchCreationRequest) {
         
         if let tripIndex = trips.firstIndex(where: { Calendar.current.isDate($0.arrivalDate, inSameDayAs: clock()) }) {
@@ -43,6 +43,6 @@ final class TripController: ObservableObject {
 
 extension TripController: CatchSubmissionService {
     func submitCatch(_ request: CatchCreationRequest) async {
-        addCatch(request)
+        await addCatch(request)
     }
 }

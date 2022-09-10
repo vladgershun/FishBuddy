@@ -22,9 +22,6 @@ enum LoadingState<Value> {
     }
 }
 
-protocol LocationService {
-    func getCurrentLocation() async throws -> CLLocationCoordinate2D
-}
 
 protocol LocationGroupingService {
     func nearestSignificantLocation(coordinate: CLLocationCoordinate2D) -> Location
@@ -45,11 +42,7 @@ struct CatchCreationRequest {
     var location: Location?
 }
 
-class StubLocationService: LocationService {
-    func getCurrentLocation() async throws -> CLLocationCoordinate2D {
-        return Location.klineline.coordinate
-    }
-}
+
 
 class DeniedLocationService: LocationService {
     func getCurrentLocation() async throws -> CLLocationCoordinate2D {
@@ -119,7 +112,7 @@ class AddCatchViewModel: ObservableObject {
         return true
     }
     
-    
+    @MainActor
     func task() async {
         do {
             let coordinate = try await locationService.getCurrentLocation()
@@ -127,6 +120,7 @@ class AddCatchViewModel: ObservableObject {
             self.coordinate = .loaded(coordinate)
             self.location = .loaded(location)
         } catch {
+            print("failed", error)
             self.coordinate = .failed(error)
             self.location = .failed(error)
         }

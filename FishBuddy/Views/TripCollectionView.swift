@@ -13,6 +13,9 @@ struct TripCollectionView: View {
     
     var body: some View {
         List(trips) { trip in
+            if trips.isEmpty {
+                Text("No Previous Trips")
+            }
             NavigationLink {
                 TripDetailView(trip: trip)
             } label: {

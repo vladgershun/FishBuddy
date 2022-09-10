@@ -14,7 +14,7 @@ struct AddCatchView: View {
     @FocusState private var baitIsFocused: Bool
     
     init(catchSubmissionService: CatchSubmissionService) {
-        _viewModel = StateObject(wrappedValue: AddCatchViewModel(catchSubmission: catchSubmissionService, locationService: DeniedLocationService(), locationGrouping: StubLocationGroupingService()))
+        _viewModel = StateObject(wrappedValue: AddCatchViewModel(catchSubmission: catchSubmissionService, locationService: CoreLocationService(), locationGrouping: StubLocationGroupingService()))
     }
 
     @Environment(\.dismiss) var dismiss
